@@ -33,4 +33,3 @@ jobs:
           start: npm run dev
           wait-on: 'http://localhost:5173'
           wait-on-timeout: 60
-          

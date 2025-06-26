@@ -10,8 +10,12 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ContadorVue
+
     steps:
-      - name: Clonar el repo
+      - name: Checkout repositorio
         uses: actions/checkout@v3
 
       - name: Usar Node.js
@@ -22,20 +26,10 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
-      - name: Iniciar servidor de desarrollo
-        run: npm run dev &
-        env:
-          NODE_ENV: development
-
-      - name: Esperar que el servidor esté listo
-        uses: jakejarvis/wait-action@master
-        with:
-          url: 'http://localhost:5173'
-          timeout: 60
-
-      - name: Ejecutar tests de Cypress
+      - name: Ejecutar pruebas E2E con Cypress
         uses: cypress-io/github-action@v6
         with:
+          working-directory: ContadorVue
           start: npm run dev
           wait-on: 'http://localhost:5173'
           wait-on-timeout: 60

@@ -6,6 +6,7 @@
     button(@click="increment") Incrementar
     button(@click="decrement") Decrementar
     p(v-if="count !== 0") {{ message }}
+    p {{newName}}
 </template>
 
 <script setup>

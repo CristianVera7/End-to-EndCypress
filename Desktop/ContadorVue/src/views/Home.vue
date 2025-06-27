@@ -18,7 +18,7 @@ function saveName() {
     alert('Por favor, introduce tu nombre')
   }
 
-  router.push('/Counter')
+  router.push({name:'counter'})
 }
 
 </script>
